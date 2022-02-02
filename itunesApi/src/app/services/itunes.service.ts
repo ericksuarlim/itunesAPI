@@ -13,15 +13,15 @@ const httpOptions = {
 })
 export class ItunesService {
 
-  baseUrl: string ="https://itunes.apple.com/search?term="
+  baseUrl: string ="https://itunes.apple.com/search?"
 
   constructor(private http:HttpClient) {
 
   }
 
-  getSearch(term: string):Observable<any[]>{
-    return this.http.jsonp<any>(
-      this.baseUrl + term , 'callback');
+  getSearch(term: string , typeMedia: string ):Observable<any[]>{
+    console.log(term + typeMedia);
+    return this.http.jsonp<any>(this.baseUrl + "term=" + term + "&entity=" + typeMedia , 'callback');
   }
 
 

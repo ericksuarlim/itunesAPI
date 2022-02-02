@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ItunesService } from './services/itunes.service';
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,11 +9,28 @@ import { ItunesService } from './services/itunes.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
-  title = 'itunesApi';
+export class AppComponent{
+
+  form: any = {
+    term: "",
+    mediaType: "",
+  };
+  
+
+  
+
+
   constructor(private itunesService:ItunesService){
-    this.itunesService.getSearch("jack+johnson").subscribe(resp=>{console.log(resp)})
+
   }
+
+
+
+  onSubmit(){
+    this.itunesService.getSearch(this.form.term , this.form.mediaType).subscribe(resp=>{console.log(resp)})
+  }
+  
+
 
 }
 
