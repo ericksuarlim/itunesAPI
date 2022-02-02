@@ -1,11 +1,10 @@
-#miformulario{
+#formMain{
     display: flex;
 }
 
 .row{
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .container{

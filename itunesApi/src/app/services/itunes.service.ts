@@ -19,7 +19,7 @@ export class ItunesService {
 
   }
 
-   getSearch(term: string , typeMedia: string ): Observable<any[]>{
+  getSearch(term: string , typeMedia: string ): Observable<any[]>{
     return this.http.get<any[]>(this.baseUrl + "term=" + term + typeMedia);
   }
 
