@@ -4,12 +4,11 @@
     <h1 class="text-center">Explore the music you love!</h1>
     
     <form class="form-inline" id="miformulario" (ngSubmit)="onSubmit()">
-      <input type="text" class="form-control m-1 w-75" id="usuario" placeholder="Michael Bolton" [(ngModel)]="form.term" name="formTerm" required>
-      <select class="form-select m-1 w-25" aria-label="Default select example" [(ngModel)]="form.mediaType" name="mediaType" >
-        <option selected>All</option>
-        <option value="All">All</option>
+      <input type="text" class="form-control m-1 w-75" id="usuario" placeholder="Michael Bolton" [(ngModel)]="form.term"  (ngModelChange)="updateFilter()" (click)="updateFilter()"  name="formTerm" required>
+      <select class="form-select m-1 w-25"  [(ngModel)]="form.mediaType"  name="mediaType" >
+        <option selected value="all">All</option>
         <option value="musicVideo">Music</option>
-        <option value="tvShow">tvShow</option>
+        <option value="movies">tvShow</option>
       </select>
       <button type="submit" class="btn btn-primary m-1">Search</button>
    </form>
