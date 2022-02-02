@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItunesService } from './services/itunes.service';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 
 
@@ -16,7 +17,10 @@ export class AppComponent{
     term: "",
     mediaType: "",
   };
-   items: [] | any;
+
+  isOpen: boolean = false;
+
+  items: [] | any;
    
 
   
@@ -28,18 +32,24 @@ export class AppComponent{
 
 
 
+
   onSubmit(){
+    console.log("Entroo");
     this.form.mediaType = this.form.mediaType==="all" ? this.form.mediaType = "&limit=25" : "&entity=" + this.form.mediaType;
-    this.itunesService.getSearch(this.form.term , this.form.mediaType).subscribe(resp=>{console.log(resp)});
+    this.itunesService.getSearch(this.form.term , this.form.mediaType).subscribe(result =>{
+      this.items = result; 
+      this.items=this.items.results; 
+      console.log("Veree",this.items);
+      this.showResults();
+    });
+
+    
   }
 
-  //helper function to get select values
-  updateFilter(){
-    this.itunesService.getSearch(this.form.term , " ").subscribe( items => { this.items = items});
-
+  showResults(){
+    this.isOpen =true;
+    console.log("Salioo");
   }
-
-  
 
 
 }

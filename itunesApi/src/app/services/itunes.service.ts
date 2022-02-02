@@ -19,9 +19,8 @@ export class ItunesService {
 
   }
 
-  getSearch(term: string , typeMedia: string ):Observable<any[]>{
-    console.log(term + typeMedia);
-    return this.http.jsonp<any>(this.baseUrl + "term=" + term + typeMedia , 'callback');
+   getSearch(term: string , typeMedia: string ): Observable<any[]>{
+    return this.http.get<any[]>(this.baseUrl + "term=" + term + typeMedia);
   }
 
 
