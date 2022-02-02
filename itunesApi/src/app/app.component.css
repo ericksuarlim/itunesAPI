@@ -1,0 +1,13 @@
+#formMain{
+    display: flex;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container{
+    background-color: #dfdfdf;
+    min-height: 100vh; 
+}
